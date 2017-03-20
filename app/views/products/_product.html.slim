@@ -1,8 +1,12 @@
 .product
-	h2 = product.name
-	p 
-		strong> The numbers
-		= product.description
+	h2 = product.name	
 	p 
 		strong> Price
-		= product.price
+		= number_to_currency product.price
+	-	if full_details
+	  	p 
+		strong> The numbers
+		= product.description
+	-	else
+		p
+			= link_to 'Details', product
