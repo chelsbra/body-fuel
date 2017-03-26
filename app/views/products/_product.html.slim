@@ -1,12 +1,16 @@
-.product
-	h2 = product.name	
-	p 
-		strong> Price
-		= number_to_currency product.price
-	-	if full_details
-	  	p 
-		strong> The numbers
-		= product.description
-	-	else
-		p
-			= link_to 'Details', product
+.card
+	div.card-block
+		h2.card-title
+		 	= product.name	
+		div.card-block
+			div.card-text
+				p 
+					strong> Price
+					= number_to_currency product.price
+				-	if full_details
+				  	p 
+					strong> The numbers
+					= product.description
+				-	else
+					p
+						= link_to 'Details', product
