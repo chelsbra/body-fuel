@@ -1,4 +1,28 @@
-li
-	= link_to 'About', page_path('about')
-li
-	= link_to 'Contact Us', page_path('contact')
+nav.navbar navbar-toggleable-md navbar-light bg-faded
+	button.navbar-toggler navbar-toggler-right type="button" data-toggle"collapse" data-target"#navebarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+		span.navbar-toggler-icon
+	a.navbar-brand href="#"
+		Navbar
+
+	div.collapse navbar-collapse #navbarTogglerDemo02
+		ul.navbar-na mr.auto mt-2 mt-md-0
+			li.nav-item active
+				a.nav-link
+					= link_to 'Home', rooth_path
+					span.sr-only
+						(current)
+			li.nav-item
+				a.nav-link
+					= link_to 'About', page_path('about')
+			li.nav-item
+				a.nav-link
+					= link_to 'Contact Us', page_path('contact')
+
+
+
+
+					ul.nav
+  li
+    = link_to 'Home', root_path
+  == render 'layouts/navigation_links'
+

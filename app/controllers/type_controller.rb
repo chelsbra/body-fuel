@@ -4,6 +4,6 @@ class TypeController < ApplicationController
 	end
 	
 	def show
-		@type = Type.find(params[:id])
+		@type = Type.find(params[:name])
 	end
 end

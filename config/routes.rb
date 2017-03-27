@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get '/search' => 'store#search'
+
+  get '/search_results' => 'store#search_results'
+
   # get 'products/index'
 
   # get 'products/show'

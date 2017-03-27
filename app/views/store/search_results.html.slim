@@ -1,0 +1,8 @@
+h1 Store#search_results
+
+div.card-deck-wrapper
+	div.card-deck
+		-	if @found_products.nil?
+				p no results
+
+		= render partial: 'products/product', collection: @found_products

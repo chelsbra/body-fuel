@@ -1,4 +1,21 @@
-ul.nav
-  li
-    = link_to 'Home', root_path
-  == render 'layouts/navigation_links'
+nav class="navbar navbar-toggleable-md navbar-light bg-faded"
+	button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation"
+		span.navbar-toggler-icon
+	a.navbar-brand href="#"
+		Navbar
+
+	div class="collapse navbar-collapse #navbarTogglerDemo02"
+		ul class="navbar-na mr-auto mt-2 mt-md-0"
+			li class="nav-item active"
+				a.nav-link
+					= link_to 'Home', root_path
+			li.nav-item
+				a.nav-link
+					= link_to 'About', page_path('about')
+			li.nav-item
+				a.nav-link
+					= link_to 'Contact Us', page_path('contact')
+		form class="form-inline my-2 my-lg-0"
+			input class="form-control mr-sm-2" type="text" placeholder="Search"
+			button class="btn btn-outline-success my-2 my-sm-0" type="submit"
+				Search
