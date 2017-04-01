@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get '/search' => 'store#search'
 
   get '/search_results' => 'store#search_results'
@@ -7,7 +8,7 @@ Rails.application.routes.draw do
 
   # get 'products/show'
 
-  get 'pages/:page' => 'pages#show'
+  get '/:page' => 'pages#show'
 
   # get '/about' => 'pages#show'
   # get '/contact' => 'pages#show'
