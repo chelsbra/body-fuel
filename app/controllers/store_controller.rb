@@ -3,7 +3,6 @@ class StoreController < ApplicationController
   end
 
   def search_results
-  	keywords = "%" + params[:Search_keywords] + "%"
-  	@found_products = Product.keyword_search(params[:Search_keywords])
+  	@found_products = Product.keyword_search(params[:search_keywords])
   end
 end

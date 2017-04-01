@@ -1,5 +1,6 @@
 .card
-	img.card-img-top
+	img.card-img-top 
+		= image_tag product.image, height:'400'
 	div.card-block
 		h2.card-title
 		 	= product.name	
@@ -8,6 +9,9 @@
 				p 
 					strong> Price
 					= number_to_currency product.price
+				-	if product.type.present?
+					strong> = product.type.name				
+
 				-	if full_details
 				  	p 
 					strong> The numbers
