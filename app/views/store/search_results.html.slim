@@ -3,6 +3,6 @@ h1 Search Results
 div.card-deck-wrapper
 	div.card-deck
 		-	if @found_products.any?
+				= render partial: 'products/product', collection: @found_products, locals: {full_details: false}	
+		-	else
 				p no results
-
-		= render partial: 'products/product', collection: @found_products, locals: {full_details: false}

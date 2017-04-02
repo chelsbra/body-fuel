@@ -6,6 +6,6 @@ class Product < ApplicationRecord
   
   def self.keyword_search(keywords)
   		keywords = "%" + keywords + "%"
-  		Product.where("name LIKE ? OR description LIKE ?", keywords, keywords)
+  		Product.where("name LIKE ? OR #{type_id.name} LIKE ?", keywords, keywords)
   end
 end

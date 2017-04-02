@@ -68,3 +68,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # carrierwave for file upload gem
 gem 'carrierwave', '~> 1.0'
+
+#pagnation
+gem 'kaminari'

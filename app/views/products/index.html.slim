@@ -2,5 +2,9 @@ h1 Available Meals
 
 div.card-deck-wrapper
 	div.card-deck
+		= @types.each do |type|
+		h2	
+			type.name
 		= render partial: 'product', collection: @products, locals: {full_details: false}
+		
 	
