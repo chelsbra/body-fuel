@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  #devise_for :users
   get '/search' => 'store#search'
 
   get '/search_results' => 'store#search_results'
@@ -27,6 +27,9 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/logout', to: 'devise/sessions#destroy'
   end
+
+  #tell devise to use registrations_controller
+  devise_for :users, :controllers => { registrations: 'registrations' }
 
   root to: 'products#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

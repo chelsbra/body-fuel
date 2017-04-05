@@ -1,9 +1,12 @@
-h1 Available Meals
+h1.heading
+	 | Meals
 div.row
 	div.card-deck-wrapper
 		div.card-deck
-			- @types.each do |type|
-				h2 = type.name					 
+			ul.types
+				li.types
+					- @types.each do |type|
+						h3 = type.name					 
 			= render partial: 'product', collection: @products, locals: {full_details: false}
 = paginate @products
 
