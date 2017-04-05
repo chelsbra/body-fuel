@@ -19,6 +19,15 @@ Rails.application.routes.draw do
   resources 'products', only: [:index, :show]
   #resources 'pages', only: [:show]
 
+  #set login url to login page an
+  as :user do
+    get '/login', to: 'devise/sessions#new'
+  end
+  #set logout page
+  devise_scope :user do
+    get '/logout', to: 'devise/sessions#destroy'
+  end
+
   root to: 'products#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
