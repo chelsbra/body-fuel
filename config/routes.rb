@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   # get 'products/show'
 
-  get '/:page' => 'pages#show'
+  get 'page/:page' => 'pages#show', as: 'page'
 
   # get '/about' => 'pages#show'
   # get '/contact' => 'pages#show'
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   resources 'products', only: [:index, :show]
-  resources 'pages', only: [:show]
+  #resources 'pages', only: [:show]
 
   root to: 'products#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

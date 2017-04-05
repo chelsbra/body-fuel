@@ -9,9 +9,12 @@ html
     == javascript_include_tag 'application', 'data-turbolinks-track' => 'reload'
     == csrf_meta_tags
   body
-    div.container
-      header
-        == render 'layouts/navigation'
-      main[role="main"]
-        == render 'layouts/messages'
-        == yield
+    div.container-fluid
+      div.row
+        div.col-12
+          header
+            == render 'layouts/navigation'
+      div.row
+        main[role="main"]
+          == render 'layouts/messages'
+          == yield

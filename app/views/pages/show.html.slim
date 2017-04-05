@@ -1,1 +1,5 @@
-= render partial: "page/#{params[:page]}", collection: @page
+
+- if @page.title == "contact"
+	= render partial: "contact", object: @page
+- else
+	= render partial: "about", object: @page
