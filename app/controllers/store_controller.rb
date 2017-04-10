@@ -6,10 +6,11 @@ class StoreController < ApplicationController
 
   def search_results
     @types = Type.order("name")   
-    @found_products = Product.where(nil).page(params[:page]).per(2)
+   @found_products = Product.where(nil).page(params[:page]).per(2)
       
-    @found_products = Product.keywords(params[:search_keywords]).page(params[:page]).per(2) if params[:search_keywords].present?
-    @found_products = Product.high_protein(params[:type_id].to_i).page(params[:page]).per(2) if params[:type_id].present?
+    @found_products = @found_products.keywords(params[:search_keywords]) if params[:search_keywords].present?
+    @found_products = @found_products.high_protein(params[:product][:type_id].to_i) if params[:product][:type_id].present?
+    @order_item = current_order.order_items.new
 
     #keyword_search(params[:type_id], params[:search_keywords])  	
   end

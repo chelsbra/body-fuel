@@ -7,7 +7,7 @@ class Product < ApplicationRecord
   
   scope :high_protein, -> (type_id) { where("type_id = ?", type_id) if type_id.present? }
  
-  scope :keywords, -> (keywords) { where("name LIKE ?", "#{name}%") }
+  scope :keywords, -> (keywords) { where("name LIKE ?", "%#{keywords}%") }
 
   # scope :low_carb, -> {where('type_id = 2')}
   # scope :high_carb, -> {where('type_id = 3')}
