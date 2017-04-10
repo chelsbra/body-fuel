@@ -1,0 +1,8 @@
+div
+	-if @order_items.size == 0
+		p.text-center
+			| There are no items in your cart. Please 
+			= link_to "go back", root_path
+	- else
+		= @order_items.each do |order_item|
+			= render 'carts/cart_row', product: order_item.product, order_item: order_item, show_total: true
