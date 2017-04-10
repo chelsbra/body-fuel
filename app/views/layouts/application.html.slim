@@ -11,6 +11,9 @@ html
   body
     div.container-fluid
       div.row
+        div.col-xs-6
+          p.cart-text.text-right
+            == render 'layouts/cart_text'
         div.col-12
           header
             == render 'layouts/navigation'

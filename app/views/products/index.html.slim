@@ -3,11 +3,13 @@ h1.heading
 div.row
 	div.card-deck-wrapper
 		div.card-deck
-			ul.types
-				li.types
-					- @types.each do |type|
-						h3 = type.name					 
-			= render partial: 'product', collection: @products, locals: {full_details: false}
-= paginate @products
+			div.col-4
+				ul.types
+					li.types
+						-	@types.each do |type|
+								h3 = type.name		
+			= render partial: 'product', collection: @products, order_item: @order_item, locals: {full_details: false}
+div.text-center
+	= paginate @products, theme: 'twitter-bootstrap-4'
 
 	

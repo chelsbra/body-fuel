@@ -1,23 +1,25 @@
 Rails.application.routes.draw do
+  get 'order_items/create'
+
+  get 'order_items/update'
+
+  get 'order_items/destroy'
+
+  get 'carts/show'
+
   #devise_for :users
   get '/search' => 'store#search'
 
   get '/search_results' => 'store#search_results'
 
-  # get 'products/index'
-
-  # get 'products/show'
-
   get 'page/:page' => 'pages#show', as: 'page'
-
-  # get '/about' => 'pages#show'
-  # get '/contact' => 'pages#show'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
   resources 'products', only: [:index, :show]
-  #resources 'pages', only: [:show]
+  resource :cart, only: [:show]
+  resources :order_items, only: [:create, :update, :destroy]
 
   #set login url to login page an
   as :user do

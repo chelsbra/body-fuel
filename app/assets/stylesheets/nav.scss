@@ -1,8 +1,10 @@
 
-ul {
-	display: inline;
-}
+.types {
+	list-style: none;
+ }
 
-li {
-	display: inline-block;
+ .pagination{
+	display: inline-flex;
+ 	margin:0 auto;
+ 	padding:10px;
  }

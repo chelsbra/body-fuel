@@ -71,3 +71,7 @@ gem 'carrierwave', '~> 1.0'
 
 #pagnation
 gem 'kaminari'
+gem 'bootstrap4-kaminari-views'
+
+#searching
+gem 'has_scope'

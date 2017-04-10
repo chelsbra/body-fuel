@@ -7,16 +7,22 @@ div.col-4
 			 	= product.name	
 			div.card-block
 				div.card-text
-					p 
-						strong> Price
-						= number_to_currency product.price
-					-	if product.type.present?
-						strong> = product.type.name				
+					= form_for @order_item, remote: true do |f|
+						p.text-right 
+							strong> Price
+							= number_to_currency product.price
+						-	if product.type.present?
+							strong> = product.type.name				
 
-					-	if full_details
-					  	p 
-						strong> The numbers
-						= product.description
-					-	else
-						p
+						-	if full_details
+						  	p 
+							strong> The numbers
+							= product.description
+						-	else
+							p
 							= link_to 'Details', product
+						div.input-group
+							= f.number_field :quantity, value: 1, class:"form-control", min: 1
+							div.input-group-btn
+								= f.hidden_field :product_id, value: product.id
+								= f.submit "Add to Cart", class: "btn btn-primary"

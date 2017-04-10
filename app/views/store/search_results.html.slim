@@ -1,8 +1,15 @@
-h1 Search Results
-
-div.card-deck-wrapper
-	div.card-deck
-		-	if @found_products.any?
-				= render partial: 'products/product', collection: @found_products, locals: {full_details: false}	
-		-	else
-				p no results
+h1.heading
+	| Search Results
+div.row
+	div.card-deck-wrapper
+		div.card-deck
+			div.col-4
+				ul.types
+					li.types
+						-	@types.each do |type|
+								h3 = type.name
+			-	if @found_products.present?
+					= render partial: 'products/product', collection: @found_products, locals: {full_details: false}	
+			-	else
+					p no results
+= paginate @found_products
