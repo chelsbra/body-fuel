@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   #tell devise to use registrations_controller
   devise_for :users, :controllers => { registrations: 'registrations' }
 
-  resources :charges
+  resources :charges, only: [:new, :create]
 
   root to: 'products#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
