@@ -75,3 +75,6 @@ gem 'bootstrap4-kaminari-views'
 
 #searching
 gem 'has_scope'
+
+source 'https://rubygems.org'
+gem 'stripe'
