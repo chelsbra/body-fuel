@@ -1,1 +1,7 @@
-h2 Thanks, you paid strong>$5.00
+h2 Thanks, you paid = number_to_currency(@charge.amount /100)
+
+h3 Customer information
+= debug @customer
+
+h3 Charges
+= debug @charge
