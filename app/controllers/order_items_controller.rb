@@ -1,9 +1,13 @@
 class OrderItemsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
   	@order = current_order
     @order_item = @order.order_items.new(order_item_params)
     @order.save
     session[:order_id] = @order.id
+
+    @user = current_user.id
   end
 
   def update

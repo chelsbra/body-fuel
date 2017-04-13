@@ -3,14 +3,25 @@ div.container
 		div.col-xs-12.col-xs-offset-1
 			h4
 				= product.name
+
 			img class="rounded.mx-auto.d-block"
 			= image_tag product.image, height:'400'
+
 		div.col-xs-4
 			= form_for order_item, remote: true do |f|
 				h4.text-right
 					| Unit Price:
 					span
 						= number_to_currency order_item.item_price
+				h4.text-right
+					| PST:
+					span
+						= current_user.province.pst_rate
+				h4.text-right
+					| GST:
+					span
+						= current_user.province.gst_rate
+
 				div.row
 					div.col-xs-4
 						= f.number_field :quantity, value: order_item.quantity.to_i, class: "form-control quantity", min: 1
@@ -18,7 +29,7 @@ div.container
 					div.col-xs-8.text-right
 						div.btn-group
 							= f.submit "Update", class: "btn btn-primary"
-							= link_to "Delete", order_item, { data: {confirm: "Are you sure you want to delete '#{order_item.product.name}'?"}, method: :delete, remote: true, class: "btn btn-danger" }
+							= link_to "Remove", order_item, { data: {confirm: "Are you sure you want to delete '#{order_item.product.name}'?"}, method: :delete, remote: true, class: "btn btn-danger" }
 					h4.text-right							
 						| Total:
 						span
@@ -26,5 +37,5 @@ div.container
 
 				
 					div.col-xs-4
-						button.btn.btn-outline-success.xl-2
-						= link_to 'Complete Order', new_charge_path
+					form.form-inline action="new_charge_path"
+						button.btn.btn-outline-success.xl-2 role="button" type="submit" = value="Complete Order"
