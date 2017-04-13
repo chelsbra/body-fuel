@@ -16,9 +16,14 @@ nav class="navbar navbar-toggleable-md navbar-light bg-faded" style="background-
 					= link_to 'About', page_path('about')
 			li.nav-item
 				a.nav-link
-					= link_to 'Contact Us', page_path('contact')		
-		button.btn.btn-outline-success.sm-0.right-nav role="button"
-			= link_to 'Sign in', '/login'			
+					= link_to 'Contact Us', page_path('contact')
+		
+		-	if user_signed_in?
+			form.form-inline.my-2.my-lg-0 action="/logout"
+				button.btn.btn-outline-success.sm-0.right-nav role="button" type="submit" = value="Sign out"
+		-	else
+			form.form-inline.my-2.my-lg-0 action="/login"
+				button.btn.btn-outline-success.sm-0.right-nav role="button" type="submit" = value="Sign in"			
 		= form_tag(search_results_path, :method => "get", id: "search-form", class: "form-inline my-2 my-lg-0") do 
 			= select(:product, :type_id, [['High Protein', 1], ['Low Carb', 2], ['High Carb', 3]], class: "form-control" )
 			= text_field_tag :search_keywords, params[:search_keywords], placeholder: "Search", class: "form-control mr-sm-2" 
