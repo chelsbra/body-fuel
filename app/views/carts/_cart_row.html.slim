@@ -16,11 +16,15 @@ div.container
 				h4.text-right
 					| PST:
 					span
-						= current_user.province.pst_rate
+						= number_to_currency order_item.total_price * current_user.province.pst_rate
 				h4.text-right
 					| GST:
 					span
-						= current_user.province.gst_rate
+						= number_to_currency order_item.total_price * current_user.province.gst_rate
+				h4.text-right
+					| Total:
+					span
+						= number_to_currency (order_item.total_price * current_user.province.gst_rate) + (order_item.total_price * current_user.province.pst_rate) + order_item.total_price
 
 				div.row
 					div.col-xs-4
@@ -30,12 +34,8 @@ div.container
 						div.btn-group
 							= f.submit "Update", class: "btn btn-primary"
 							= link_to "Remove", order_item, { data: {confirm: "Are you sure you want to delete '#{order_item.product.name}'?"}, method: :delete, remote: true, class: "btn btn-danger" }
-					h4.text-right							
-						| Total:
-						span
-							= number_to_currency order_item.total_price
 
 				
 					div.col-xs-4
-					form.form-inline action="new_charge_path"
+					form.form-inline action="charges/new"
 						button.btn.btn-outline-success.xl-2 role="button" type="submit" = value="Complete Order"

@@ -1,10 +1,12 @@
 class ChargesController < ApplicationController
+	before_action :authenticate_user!
 	def new
+		@amount = order_item.total_price
 	end
 
 	def create
 	  # Amount in cents
-	  @amount = 500
+	  @amount = order_item.total_price
 
 	  @customer = Stripe::Customer.create(
 	    :email => params[:stripeEmail],

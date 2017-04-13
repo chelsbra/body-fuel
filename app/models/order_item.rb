@@ -16,13 +16,8 @@ class OrderItem < ApplicationRecord
     end
   end
 
-  def taxes
-    total_price * current_user.province.pst_rate
-    
-  end
-
   def total_price
-    item_price * quantity + taxes
+    item_price * quantity
   end
 
 private
@@ -40,6 +35,6 @@ private
 
   def finalize
     self[:item_price] = item_price
-    self[:total_price] = quantity * self[:item_price] + taxes
+    self[:total_price] = quantity * self[:item_price]
   end
 end
