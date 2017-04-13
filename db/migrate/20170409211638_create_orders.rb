@@ -5,7 +5,7 @@ class CreateOrders < ActiveRecord::Migration[5.0]
       t.decimal :tax, precision: 12, scale: 3
       t.decimal :delivery, precision: 12, scale: 3
       t.decimal :total, precision: 12, scale: 3
-      t.references :order_statu, foreign_key: true
+      t.references :order_statuses, foreign_key: true
 
       t.timestamps
     end
