@@ -7,7 +7,7 @@ div.col-4
 			 	= product.name	
 			div.card-block
 				div.card-text
-					= form_for @order_item, remote: true do |f|
+					= form_for @order_item, remote: true, authenticity_token: true do |f|
 						p.text-right 
 							strong> Price
 							= number_to_currency product.price
