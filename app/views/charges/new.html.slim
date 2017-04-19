@@ -5,7 +5,7 @@
 				p
 					=flash[:error]
 		label.amount
-			span Amount 
-				= @amount
+			span Amount #{@amount}
+				
 
-	script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="#{Rails.configuration.stripe[:publishable_key]}" data-description="#{@description}" data-amount="#{@amount}" data-locale="auto"
+	script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="#{Rails.configuration.stripe[:publishable_key]}" data-description="#{@description}" data-amount="#{@amount*100}" data-locale="auto"

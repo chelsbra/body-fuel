@@ -1,0 +1,35 @@
+div.container
+	div.row
+		div.col-xs-12.col-xs-offset-1
+			div.card.offset-7
+				h2 Order Details
+
+				table.table
+					tr 
+						td Name: #{@user}
+						
+					tr
+						td Address: #{@address}
+					tr
+						td Province: #{@province.name}		
+					tr
+						td Postal Code: #{@postal}
+					tr
+						td Order Number: #{current_order.id}
+					tr
+						td Sub total: #{@sub_total}
+					- if @pst.present?
+					tr
+						td PST: #{@pst}
+					- if @gst.present?
+					tr
+						td td GST: #{@gst}
+					- if @hst.present?
+					tr
+						td HST: #{@hst}
+					tr
+						td TOTAL: #{@total}
+
+					tr
+						td =link_to 'Complete Order', new_charge_path, class: "btn btn-success"
+

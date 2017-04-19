@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'orders/submit'
+
   get 'order_items/create'
 
   get 'order_items/update'
@@ -13,6 +15,8 @@ Rails.application.routes.draw do
   get '/search_results' => 'store#search_results'
 
   get 'page/:page' => 'pages#show', as: 'page'
+
+  get '/orders/submit' => 'orders#submit'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

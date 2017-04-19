@@ -1,41 +1,42 @@
 div.container
 	div.row
 		div.col-xs-12.col-xs-offset-1
-			h4
-				= product.name
+			div.card.offset-7
+				h4
+					= product.name
 
-			img class="rounded.mx-auto.d-block"
-			= image_tag product.image, height:'400'
+				img class="rounded.mx-auto.d-block"
+				= image_tag product.image, height:'400'
 
-		div.col-xs-4
-			= form_for order_item, remote: true do |f|
-				h4.text-right
-					| Unit Price:
-					span
-						= number_to_currency order_item.item_price
-				h4.text-right
-					| PST:
-					span
-						= number_to_currency order_item.total_price * current_user.province.pst_rate
-				h4.text-right
-					| GST:
-					span
-						= number_to_currency order_item.total_price * current_user.province.gst_rate
-				h4.text-right
-					| Total:
-					span
-						= number_to_currency (order_item.total_price * current_user.province.gst_rate) + (order_item.total_price * current_user.province.pst_rate) + order_item.total_price
+				div.col-xs-4
+					= form_for order_item, remote: true do |f|
+						h4.text-right
+							| Unit Price:
+							span
+								= number_to_currency order_item.item_price
+						h4.text-right
+							| PST:
+							span
+								= number_to_currency order_item.total_price * current_user.province.pst_rate
+						h4.text-right
+							| GST:
+							span
+								= number_to_currency order_item.total_price * current_user.province.gst_rate
+						h4.text-right
+							| Total:
+							span
+								= number_to_currency (order_item.total_price * current_user.province.gst_rate) + (order_item.total_price * current_user.province.pst_rate) + order_item.total_price
 
-				div.row
+						div.row
+							div.col-xs-4
+								= f.number_field :quantity, value: order_item.quantity.to_i, class: "form-control quantity", min: 1
+								= f.hidden_field :product_id, value: product.id
+							div.col-xs-8.text-right
+								div.btn-group
+									= f.submit "Update", class: "btn btn-primary"
+									= link_to "Remove", order_item, { data: {confirm: "Are you sure you want to delete '#{order_item.product.name}'?"}, method: :delete, remote: true, class: "btn btn-danger" }
+
+					
 					div.col-xs-4
-						= f.number_field :quantity, value: order_item.quantity.to_i, class: "form-control quantity", min: 1
-						= f.hidden_field :product_id, value: product.id
-					div.col-xs-8.text-right
-						div.btn-group
-							= f.submit "Update", class: "btn btn-primary"
-							= link_to "Remove", order_item, { data: {confirm: "Are you sure you want to delete '#{order_item.product.name}'?"}, method: :delete, remote: true, class: "btn btn-danger" }
-
-				
-					div.col-xs-4
-					form.form-inline action="charges/new"
+					form.form-inline action="/orders/submit"
 						button.btn.btn-outline-success.xl-2 role="button" type="submit" = value="Complete Order"
